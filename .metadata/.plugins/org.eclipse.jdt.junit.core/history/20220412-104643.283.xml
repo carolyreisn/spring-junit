@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProfessorControllerTests" project="primeiro-ms" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.nava.controllers.ProfessorControllerTests" time="1.075" displayname="ProfessorControllerTests" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]">
+    <testcase name="getOneTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.818" displayname="getOneTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:getOneTest()]"/>
+    <testcase name="getAllTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.254" displayname="getAllTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:getAllTest()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,59 @@
+package br.com.nava.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.nava.entities.EnderecoEntity;
+import br.com.nava.repositories.EnderecoRepository;
+
+@Service
+public class EnderecoService {
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	public List<EnderecoEntity> getAll() {
+		return enderecoRepository.findAll();
+	}
+	
+	public EnderecoEntity getOne(int id) {
+		
+		Optional<EnderecoEntity> optionalendereco = enderecoRepository.findById(id);
+		EnderecoEntity endereco = optionalendereco.orElse(new EnderecoEntity());
+		return endereco;
+
+	}
+		public EnderecoEntity save(EnderecoEntity endereco) {
+		
+		return enderecoRepository.save(endereco);
+		
+	}
+		public EnderecoEntity update(int id, EnderecoEntity endereco) {
+			Optional<EnderecoEntity> optionalendereco = enderecoRepository.findById(id);
+			if(optionalendereco.isPresent() ==true) {
+				EnderecoEntity enderecoBD = optionalendereco.get();
+				enderecoBD.setRua(endereco.getRua());
+				enderecoBD.setNumero(endereco.getNumero());
+				enderecoBD.setCep(endereco.getCep());
+				enderecoBD.setCidade(endereco.getCidade());
+				enderecoBD.setEstado(endereco.getEstado());
+				enderecoBD.setUsuario(endereco.getUsuario());
+				
+				return enderecoRepository.save(enderecoBD);
+			}
+			else {
+				return new EnderecoEntity();
+			}
+			
+		}
+		
+		public void delete(int id) {
+			
+			enderecoRepository.deleteById(id);
+			
+		}
+
+}

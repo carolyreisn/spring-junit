@@ -1,0 +1,72 @@
+package br.com.nava.services;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.nava.entities.ProdutoEntity;
+import br.com.nava.entities.VendaEntity;
+import br.com.nava.repositories.ProdutoRepository;
+import br.com.nava.repositories.VendaRepository;
+
+@Service
+public class VendaService {
+		
+		@Autowired
+		private VendaRepository vendaRepository;
+		
+		@Autowired
+		private ProdutoRepository produtoRepository;
+		
+		public List<VendaEntity> getAll() {
+			return vendaRepository.findAll();
+		}
+		
+		public VendaEntity getOne(int id) {
+			
+			Optional<VendaEntity> optionalvenda = vendaRepository.findById(id);
+			VendaEntity venda = optionalvenda.orElse(new VendaEntity());
+			return venda;
+
+		}
+		public VendaEntity save(VendaEntity venda) {
+			
+			VendaEntity vendaSalva = this.vendaRepository.save(venda);
+			
+			if (venda.getProdutos().isEmpty() == false) {
+				List<ProdutoEntity> listaProdutos = venda.getProdutos();
+				for(int i = 0; i < listaProdutos.size(); i++) {
+					listaProdutos.get(i).setVendas(Arrays.asList(vendaSalva));	
+					
+				}
+				produtoRepository.saveAll(listaProdutos);
+				
+			}
+			return vendaSalva;
+		}
+		
+			public VendaEntity update(int id, VendaEntity venda) {
+				Optional<VendaEntity> optionalvenda = vendaRepository.findById(id);
+				if(optionalvenda.isPresent() ==true) {
+					VendaEntity vendaBD = optionalvenda.get();
+					vendaBD.setValorTotal(venda.getValorTotal());
+					
+					return vendaRepository.save(vendaBD);
+				}
+				else {
+					return new VendaEntity();
+				}
+				
+			}
+			
+			public void delete(int id) {
+				
+				vendaRepository.deleteById(id);
+				
+			}
+
+	}
+

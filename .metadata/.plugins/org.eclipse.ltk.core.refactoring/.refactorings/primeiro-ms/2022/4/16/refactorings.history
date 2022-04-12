@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;br.com.nava.exception&apos; to &apos;br.com.nava.exceptions&apos;&#x0D;&#x0A;- Original project: &apos;primeiro-ms&apos;&#x0D;&#x0A;- Original element: &apos;primeiro-ms/src/main/java/br.com.nava.exception&apos;&#x0D;&#x0A;- Renamed element: &apos;primeiro-ms/src/main/java/br.com.nava.exceptions&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;br.com.nava.exception&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;br.com.nava.exception" name="br.com.nava.exceptions" qualified="false" references="true" stamp="1649682195848" textual="false" version="1.0"/>
+</session>

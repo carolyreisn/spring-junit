@@ -1,0 +1,33 @@
+package br.com.nava2.entity;
+
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
+
+@Embeddable
+public class AlunoDisciplina {
+	
+	@ManyToOne
+	private Aluno aluno;
+	
+	@ManyToOne
+	private Disciplina disciplina;
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+	
+	
+
+}

@@ -1,0 +1,60 @@
+package br.com.nava.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.nava.dtos.ProdutoDTO;
+import br.com.nava.entities.ProdutoEntity;
+import br.com.nava.services.ProdutoService;
+
+
+@RestController
+@RequestMapping("produtos")
+public class ProdutoController {
+	
+	@Autowired
+	private ProdutoService produtoService;
+	
+	
+	@GetMapping()
+	public List<ProdutoDTO> getAll(){
+		return produtoService.getAll();
+	}
+	
+	@GetMapping("{id}")
+	public ProdutoDTO getOne(@PathVariable int id) {
+		
+		return produtoService.getOne(id);
+	}
+	
+	@PostMapping()
+	public ProdutoDTO save(@RequestBody ProdutoEntity produto) {
+		
+		return produtoService.save(produto);
+	}
+	
+	@PatchMapping("{id}")
+	public ProdutoDTO update(@PathVariable int id, 
+			@RequestBody ProdutoEntity produto) {
+		
+		return produtoService.update(id, produto);
+	}
+	
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable int id) {
+
+		produtoService.delete(id);
+	}
+	
+
+
+}

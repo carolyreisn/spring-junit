@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProfessorControllerTests" project="primeiro-ms" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.nava.controllers.ProfessorControllerTests" time="1.184" displayname="ProfessorControllerTests" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]">
+    <testcase name="saveTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.754" displayname="saveTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:saveTest()]"/>
+    <testcase name="updateTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.08" displayname="updateTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:updateTest()]"/>
+    <testcase name="getOneTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.029" displayname="getOneTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:getOneTest()]"/>
+    <testcase name="getAllTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.29" displayname="getAllTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:getAllTest()]"/>
+    <testcase name="deleteTest" classname="br.com.nava.controllers.ProfessorControllerTests" time="0.025" displayname="deleteTest()" uniqueid="[engine:junit-jupiter]/[class:br.com.nava.controllers.ProfessorControllerTests]/[method:deleteTest()]"/>
+  </testsuite>
+</testrun>

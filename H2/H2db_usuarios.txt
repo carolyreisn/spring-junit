@@ -1,0 +1,20 @@
+CREATE TABLE USUARIOS (
+ID INT PRIMARY KEY AUTO_INCREMENT,
+NOME VARCHAR (255),
+EMAIL VARCHAR (255) UNIQUE
+);
+
+INSERT INTO USUARIOS
+(NOME, EMAIL)
+VALUES
+('Martin Joaquim Renato Cardoso','martin-cardoso89@cartovale.com.br');
+
+INSERT INTO USUARIOS
+(NOME, EMAIL)
+VALUES
+('Luana Fernanda Louise Oliveira','luana_oliveira@technicolor.com');
+
+INSERT INTO USUARIOS
+(NOME, EMAIL)
+VALUES
+('Miguel Julio Lucas Gomes','miguel_julio_gomes@lojabichopapao.com.br');
