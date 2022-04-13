@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.nava2.constantes.Messages;
 import br.com.nava2.entity.Disciplina;
 import br.com.nava2.service.DisciplinaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = Messages.SWAGGER_TAG_DISCIPLINA_ENDPOINT)
 @RestController
 @RequestMapping("disciplinas")
 public class DisciplinaResource {
@@ -26,18 +30,21 @@ public class DisciplinaResource {
 	@Autowired
 	private DisciplinaService disciplinaService;
 	
+	@Operation(description = Messages.SWAGGER_GET_ALL)
 	@GetMapping
 	public ResponseEntity<List<Disciplina>> listarDisciplinas(){
 		List<Disciplina> disciplinas = disciplinaService.listaTodasDisciplinas();
 		return ResponseEntity.ok().body(disciplinas);
 	}
 	
+	@Operation(description = Messages.SWAGGER_GET_ONE)
 	@GetMapping("{id}")
 	public ResponseEntity<Disciplina> buscaPorID(@PathVariable Integer id) throws ObjectNotFoundException{
 		Disciplina disc = disciplinaService.buscaPorID(id);
 		return ResponseEntity.ok().body(disc);
 	}
 	
+	@Operation(description = Messages.SWAGGER_INSERT)
 	@PostMapping
 	public ResponseEntity<Void> inserir (@RequestBody Disciplina disciplina){
 		Disciplina disc = disciplinaService.salvar(disciplina);
@@ -45,6 +52,7 @@ public class DisciplinaResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@Operation(description = Messages.SWAGGER_UPDATE)
 	@PutMapping("{id}")
 	public ResponseEntity<Void> alterar(@RequestBody Disciplina objdisciplina, @PathVariable Integer id) {
 		objdisciplina.setId(id);
@@ -53,6 +61,7 @@ public class DisciplinaResource {
 		
 	} 
 	
+	@Operation(description = Messages.SWAGGER_DELETE)
 	@DeleteMapping("{id}")
 	public ResponseEntity<Void> excluir(@PathVariable Integer id){
 		disciplinaService.excluir(id);
