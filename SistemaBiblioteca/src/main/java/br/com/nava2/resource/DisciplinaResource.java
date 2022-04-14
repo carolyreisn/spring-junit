@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,13 @@ public class DisciplinaResource {
 	public ResponseEntity<List<Disciplina>> listarDisciplinas(){
 		List<Disciplina> disciplinas = disciplinaService.listaTodasDisciplinas();
 		return ResponseEntity.ok().body(disciplinas);
+	}
+	
+	@Operation(description = Messages.SWAGGER_BUSCA_POR_PAGINACAO)
+	@GetMapping(value = "page")
+	public ResponseEntity<Page<Disciplina>> alunoByPagination(){
+		Page<Disciplina> disciplina = disciplinaService.searchByPagination(1, 15, "ASC", "nome");
+		return ResponseEntity.ok(disciplina);
 	}
 	
 	@Operation(description = Messages.SWAGGER_GET_ONE)

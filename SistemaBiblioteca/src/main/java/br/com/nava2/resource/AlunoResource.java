@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,6 +36,20 @@ public class AlunoResource {
 		List<Aluno> alunos = alunoService.listaTodosAlunos();
 		return ResponseEntity.ok().body(alunos);
 	}
+	
+	@Operation(description = Messages.SWAGGER_BUSCA_POR_PAGINACAO)
+	@GetMapping(value = "page")
+	public ResponseEntity<Page<Aluno>> alunoByPagination(
+			@RequestParam(value="page", defaultValue="0") int page,
+			@RequestParam(value="linesByPage", defaultValue="10") int linesByPage,
+			@RequestParam(value="direction",defaultValue = "ASC") String direction,
+			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy
+			){
+		Page<Aluno> alunos = alunoService.searchByPagination(page, linesByPage, direction, orderBy);
+		return ResponseEntity.ok(alunos);
+		
+	}
+	
 	
 	@Operation(description = Messages.SWAGGER_GET_ONE)
 	@RequestMapping(value ="{id}", method = RequestMethod.GET)

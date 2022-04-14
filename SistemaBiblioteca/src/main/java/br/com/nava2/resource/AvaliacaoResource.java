@@ -4,12 +4,14 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -35,6 +37,28 @@ public class AvaliacaoResource {
 	public ResponseEntity<List<Avaliacao>> listarAvaliacao() {
 		List<Avaliacao> listaAvaliacao = avaliacaoService.findAll();
 		return ResponseEntity.ok(listaAvaliacao);
+	}
+	
+	@Operation(description = Messages.SWAGGER_BUSCA_POR_PAGINACAO)
+	@GetMapping(value = "v1/page")
+	public ResponseEntity<Page<Avaliacao>> alunoByPaginationV1(
+			@RequestParam(value="v1/page", defaultValue="0") int page,
+			@RequestParam(value="linesByPage", defaultValue="10") int linesByPage,
+			@RequestParam(value="direction",defaultValue = "ASC") String direction,
+			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy
+			){
+		Page<Avaliacao> avaliacao = avaliacaoService.searchByPagination(page, linesByPage, direction, orderBy);
+		return ResponseEntity.ok(avaliacao);
+	}
+	
+	@Operation(description = Messages.SWAGGER_BUSCA_POR_PAGINACAO)
+	@GetMapping(value = "v2/page")
+	public ResponseEntity<Page<Avaliacao>> alunoByPaginationV2(
+			@RequestParam(value="v2/page", defaultValue="0") int page,
+			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy
+			){
+		Page<Avaliacao> avaliacao = avaliacaoService.searchByPagination(page, 30, "DESC", orderBy);
+		return ResponseEntity.ok(avaliacao);
 	}
 	
 	@Operation(description = Messages.SWAGGER_INSERT)

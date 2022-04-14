@@ -12,6 +12,7 @@ public class Messages {
 	public static final String SWAGGER_UPDATE = "Altera um registro pelo id";
 	public static final String SWAGGER_DELETE = "Remove um registro pelo id";
 	public static final String SWAGGER_IDALUNO_IDDISCIPLINA = "Retorna uma lista de um aluno e as disciplinas dele pelo id";
+	public static final String SWAGGER_BUSCA_POR_PAGINACAO = "Busca o valor default da paginacao da api";
 	
 
 }
