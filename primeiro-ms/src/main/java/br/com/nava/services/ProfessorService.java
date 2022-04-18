@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import br.com.nava.dtos.ProfessorDTO;
 import br.com.nava.entities.ProfessorEntity;
 import br.com.nava.repositories.ProfessorRepository;
@@ -127,6 +128,20 @@ public class ProfessorService {
 //		
 //		return -1;
 //	}
+		
+		public List<ProfessorDTO> searchByName(String name) {
+//			List<ProfessorEntity>  lista = professorRepository.findByNomeContains(name);
+//			List<ProfessorEntity>  lista = professorRepository.searchByNome(name);
+//			List<ProfessorEntity> lista =  professorRepository.searchByNome2(name);
+			List<ProfessorEntity> lista =  professorRepository.searchByNomeNativeSQL(name);
+			List<ProfessorDTO> dtos = new ArrayList<>();
+			
+			for (ProfessorEntity professorEntity : lista) {
+				dtos.add(professorEntity.toDTO());
+			}
+			
+			return dtos;
+		}
 	
 }
 

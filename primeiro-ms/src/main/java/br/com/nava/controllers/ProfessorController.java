@@ -126,5 +126,18 @@ public class ProfessorController {
 		return ResponseEntity.ok().build();
 	}
 	
+//	https://localhost:8080/professores/search-by-name/fab
+	@GetMapping(value ="search-by-name/{name}")
+	public ResponseEntity<List<ProfessorDTO>> searchByName(@PathVariable String name){
+		
+//		List<ProfessorDTO> lista = professorService.searchByName(name);
+	
+//		return ResponseEntity.ok().body( lista );
+		
+//		return ResponseEntity.ok().body( professorService.searchByName(name) );
+		
+		return ResponseEntity.ok(professorService.searchByName(name));
+	}
+	
 
 }

@@ -26,7 +26,7 @@ public class VendaDTO {
 	private UsuarioEntity usuario;
 	private List<ProdutoEntity> produtos;
 	
-public VendaEntity toEntity() {
+	public VendaEntity toEntity() {
 		
 		ModelMapper mapper = new ModelMapper();
 		
