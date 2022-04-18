@@ -1,0 +1,9 @@
+Starts With
+SELECT * FROM PROFESSORES WHERE NOME like 'fab%'
+
+End with
+
+SELECT * FROM PROFESSORES WHERE NOME like '%fab'
+
+Contains
+SELECT * FROM PROFESSORES WHERE NOME like '%fab%'

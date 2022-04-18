@@ -1,5 +1,0 @@
-package br.com.nava.exceptions;
-
-public class ResourceExceptionHandler {
-
-}

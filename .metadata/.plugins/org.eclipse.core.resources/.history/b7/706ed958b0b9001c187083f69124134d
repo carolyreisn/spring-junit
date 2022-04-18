@@ -1,5 +1,0 @@
-package br.com.nava2.repository;
-
-public interface AvaliacaoRepository {
-
-}
