@@ -21,45 +21,41 @@ import br.com.nava.services.EnderecoService;
 @RestController
 @RequestMapping("enderecos")
 public class EnderecoController {
-	
+
 	@Autowired
 	private EnderecoService enderecoService;
-	
-	
+
 	@GetMapping()
-	public ResponseEntity<List<EnderecoDTO>> getAll(){
+	public ResponseEntity<List<EnderecoDTO>> getAll() {
 //		return enderecoService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(enderecoService.getAll());
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<EnderecoDTO> getOne(@PathVariable int id) {
-		
+
 //		return enderecoService.getOne(id);
 		return ResponseEntity.status(HttpStatus.OK).body(enderecoService.getOne(id));
 	}
-	
+
 	@PostMapping()
 	public ResponseEntity<EnderecoDTO> save(@RequestBody EnderecoDTO endereco) {
-		
+
 //		return enderecoService.save(endereco);
 		return ResponseEntity.status(HttpStatus.OK).body(enderecoService.save(endereco.toEntity()));
 	}
-	
+
 	@PatchMapping("{id}")
-	public ResponseEntity<EnderecoDTO> update(@PathVariable int id, 
-			@RequestBody EnderecoDTO endereco) {
-		
+	public ResponseEntity<EnderecoDTO> update(@PathVariable int id, @RequestBody EnderecoDTO endereco) {
+
 //		return enderecoService.update(id, endereco);
 		return ResponseEntity.status(HttpStatus.OK).body(enderecoService.update(id, endereco.toEntity()));
 	}
-	
+
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable int id) {
 
 		enderecoService.delete(id);
 	}
-	
-
 
 }

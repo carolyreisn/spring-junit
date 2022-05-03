@@ -40,7 +40,7 @@ public class ProfessorRepositoryTests {
 		Optional<ProfessorEntity> professor = professorRepository.findById(professorEntidade.getId());
 		
 //		validando a resposta - se o objeto encontrado não é nulo
-		assertThat(professor).isNotNull();
+		assertThat(professor).isNotEmpty();
 		
 	}
 	
@@ -79,7 +79,7 @@ public class ProfessorRepositoryTests {
 		ProfessorEntity professorSalvo = professorRepository.save(professorEntidade);
 		
 //		validação
-		assertThat(professorSalvo.getId()).isNotNull();
+		assertThat(professorSalvo.getId()).isPositive();
 		assertThat(professorSalvo.getNome()).isEqualTo(professorEntidade.getNome());
 		assertThat(professorSalvo.getNumero()).isEqualTo(professorEntidade.getNumero());
 		assertThat(professorSalvo.getRua()).isEqualTo(professorEntidade.getRua());

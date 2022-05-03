@@ -21,6 +21,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.nava.dtos.ProfessorDTO;
+import br.com.nava.entities.ProfessorEntity;
+import br.com.nava.services.ProfessorService;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -32,6 +34,9 @@ public class ProfessorControllerTests {
 //	responsavel por criar as requisições REST para a camada de Controller
 	@Autowired
 	private MockMvc mockMVC;
+	
+	@Autowired
+	private ProfessorService professorService;
 	
 	@Test
 	void getAllTest() throws Exception {
@@ -73,11 +78,7 @@ public class ProfessorControllerTests {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		ProfessorDTO professor = new ProfessorDTO();
-		professor.setCep("71515-725");
-		professor.setNome("Isis Nicole Pires");
-		professor.setRua("Quadra SHIN QL 11 Conjunto 2");
-		professor.setNumero(353);
+		ProfessorDTO professor = createdValidProfessor();
 		
 		ResultActions response = mockMVC.perform(post("/professores").content(mapper.writeValueAsString(professor)).contentType("application/json"));
 		MvcResult result = response.andReturn();
@@ -100,11 +101,7 @@ public class ProfessorControllerTests {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		ProfessorDTO professor = new ProfessorDTO();
-		professor.setCep("65058-431");
-		professor.setNome("Carlos Eduardo Diogo Fábio Viana");
-		professor.setRua("Rua Pinheiro");
-		professor.setNumero(968);
+		ProfessorDTO professor = createdValidProfessor();
 		
 		ResultActions response = mockMVC.perform(patch("/professores/4").content(mapper.writeValueAsString(professor)).contentType("application/json"));
 		MvcResult result = response.andReturn();
@@ -123,10 +120,26 @@ public class ProfessorControllerTests {
 	}
 	@Test
 	void deleteTest() throws Exception  {
-		ResultActions response = mockMVC.perform(delete("/professores/2").contentType("application/json"));
+		
+		ProfessorEntity obj = this.createdValidProfessor().toEntity();		
+		ProfessorDTO dto = this.professorService.save(obj);
+		
+		ResultActions response = mockMVC.perform(delete("/professores/"+dto.getId()).contentType("application/json"));
 		MvcResult result = response.andReturn();
 		
 		assertThat(result.getResponse().getStatus()).isEqualTo(200);
+	}
+	
+	private ProfessorDTO createdValidProfessor() {
+		
+		ProfessorDTO professorValido = new ProfessorDTO();
+		professorValido.setCep("65058-431");
+		professorValido.setNome("Carlos Eduardo Diogo Fábio Viana");
+		professorValido.setRua("Rua Pinheiro");
+		professorValido.setNumero(968);
+		
+		return professorValido;
+		
 	}
 
 	

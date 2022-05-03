@@ -6,24 +6,26 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="UsuarioDTO"/>
+		<item key="selection" value="pet"/>
 		<list key="findhistory">
-			<item value="UsuarioEntity"/>
 			<item value="usuario"/>
-			<item value="Usuario"/>
-			<item value="produto"/>
+			<item value="jpa"/>
+			<item value="validation"/>
 			<item value="Produto"/>
+			<item value="produto"/>
+			<item value="professor"/>
+			<item value="Professor"/>
 			<item value="endereco"/>
-			<item value="Endereco"/>
 		</list>
 		<list key="replacehistory">
-			<item value="UsuarioDTO"/>
-			<item value="venda"/>
+			<item value="pet"/>
 			<item value="Venda"/>
-			<item value="produto"/>
-			<item value="Produto"/>
+			<item value="usuario"/>
 			<item value="endereco"/>
 			<item value="Endereco"/>
+			<item value="produto"/>
+			<item value="venda"/>
+			<item value="mockMvc"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

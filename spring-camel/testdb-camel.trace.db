@@ -1,0 +1,35 @@
+2022-04-28 18:41:25 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás','Gata),
+('Bagheera','Gato),
+('Madara',[*]'Gato),"; SQL statement:
+INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás','Gata),
+('Bagheera','Gato),
+('Madara','Gato), [42000-200]
+2022-04-28 18:41:34 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás','Gata),
+('Bagheera','Gato),
+('Madara',[*]'Gato);"; SQL statement:
+INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás','Gata),
+('Bagheera','Gato),
+('Madara','Gato); [42000-200]
+2022-04-28 18:42:29 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás',[*]'Gata);"; SQL statement:
+INSERT INTO PETS
+(NOME, TIPO)
+VALUES
+('Lilás','Gata); [42000-200]
